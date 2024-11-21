@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\admins\AdminSanPhamController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\BuoiHoc4Controller;
 use App\Http\Controllers\BuoiHoc5Controller;
-use App\Http\Controllers\SanPhamController;
+use App\Http\Controllers\SinhVienController;
+use App\Http\Controllers\admins\AdminSanPhamController;
 
 
 /*
@@ -38,7 +39,10 @@ use App\Http\Controllers\SanPhamController;
 
 
 // Route::get('admins/list',     [SanPhamController::class,'index']);
-// Route::get('admins/create',   [SanPhamController::class,'create']);
+
 // Route::get('admins/edit/{id}',[SanPhamController::class,'edit']);
 
 Route::resource('sanphams',                   AdminSanPhamController::class);
+Route::resource('sinhviens',                   SinhVienController::class);
+// Route::get('admins/sanphams/listSV',   [SinhVienController::class,'index']);
+Route::get('admins/sanphams/createSV',   [SinhVienController::class,'create']);
