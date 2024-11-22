@@ -43,6 +43,4 @@ use App\Http\Controllers\admins\AdminSanPhamController;
 // Route::get('admins/edit/{id}',[SanPhamController::class,'edit']);
 
 Route::resource('sanphams',                   AdminSanPhamController::class);
-Route::resource('sinhviens',                   SinhVienController::class);
-// Route::get('admins/sanphams/listSV',   [SinhVienController::class,'index']);
-Route::get('admins/sanphams/createSV',   [SinhVienController::class,'create']);
+Route::resource('sinhviens',                  SinhVienController::class);

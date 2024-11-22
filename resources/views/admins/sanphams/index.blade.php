@@ -102,16 +102,22 @@
                                                             @if ($item->trang_thai == 1)
                                                                 <span class="badge bg-success-subtle text-success text-uppercase">Còn hàng</span>
                                                             @else
-                                                                <span class="badge bg-danger-subtle text-success text-uppercase">Hết hàng</span>
-                                                            
-                                                                
+                                                                <span class="badge bg-danger-subtle text-success text-uppercase">Hết hàng</span>                                                           
                                                             @endif
                                                         
                                                         </td>
                                                         <td>
-                                                            <a href="" class="btn btn-sm btn-primary">Xem</a>
-                                                            <a href="" class="btn btn-sm btn-warning">Sửa</a>
-                                                            <a href="" class="btn btn-sm btn-danger">Xóa</a>                                                
+                                                            <a href="{{route('sanphams.show', $item->id)}}" class="btn btn-sm btn-primary">Xem</a>
+
+                                                            <a href="{{route('sanphams.edit', $item->id)}}" class="btn btn-sm btn-warning">Sửa</a>
+
+                                                            <form action="{{route('sanphams.destroy', $item->id)}}" method="POST" 
+                                                                onclick="return confirm('Xác nhận xóa sản phẩm')" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm btn-danger">Xóa</button>    
+                                                            </form>  
+
                                                         </td>
                                                     </tr>
                                                 @endforeach

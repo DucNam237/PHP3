@@ -13,14 +13,15 @@ class SinhVienSeeder extends Seeder
      */
     public function run(): void
     {
-        for ($i = 1; $i < 5; $i++) {
-            DB::table('sinhviens')->insert([
+        for ($i = 1; $i <= 5; $i++) {
+            DB::table('sinh_viens')->insert([
                 'ma_sinh_vien' => "$i",
-                'ten_sinh_vien' => "Vũ Đức Nam .$i",
-                'hinh_anh' => "",
-                'ngay_sinh' => date('Y-m-d'),
-                'so_dien_thoai' => "0338086390",
-                'trang_thai' => true
+                'ten_sinh_vien' => "Vũ Đức Nam $i",
+                'hinh_anh' => null,
+                'ngay_sinh' => date("Y-m-d"),
+                'so_dien_thoai' => "033808639$i",
+                'trang_thai' => 0   ,
+                'created_at' => now(),
             ]);
         }
     }

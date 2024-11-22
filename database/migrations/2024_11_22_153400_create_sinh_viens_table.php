@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sinhviens', function (Blueprint $table) {
+        Schema::create('sinh_viens', function (Blueprint $table) {
             $table->id();
-            $table->string("ma_sinh_vien", 10)->unique(); 
-            $table->string("ten_sinh_vien", 50); 
+            $table->string("ma_sinh_vien", 10)->unique(); // Đảm bảo mã sinh viên là duy nhất
+            $table->string("ten_sinh_vien", 50); // Tăng độ dài nếu cần
             $table->string("hinh_anh")->nullable();
             $table->date("ngay_sinh");
-            $table->string("so_dien_thoai", 15); 
+            $table->string("so_dien_thoai", 15); // Đổi từ decimal sang string
             $table->boolean("trang_thai")->default(true);
             $table->timestamps();
         });

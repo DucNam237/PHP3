@@ -41,41 +41,43 @@
 
                         <div class="card-body">
                             <div class="live-preview">
-                                <form action="{{ route('sanphams.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('sinhviens.store') }}" method="POST" enctype="multipart/form-data">
                                     {{-- Khi sử dụng form trong laravel bắt buộc phải có @csrf --}}
                                     @csrf
 
                                     <div class="row gy-4">
-                                        <div class="col-md-4">
+                                        <div class="col-md-12">
                                             <div class="mt-3">
-                                                <label for="ma_san_pham" class="form-label">Mã sinh viên</label>
-                                                <input type="text" class="form-control"  name="ma_san_pham" 
-                                                    id="ma_san_pham" value="{{ strtoupper(Str::random('10')) }}" readonly>
+                                                <label for="ma_sinh_vien" class="form-label">Mã sinh viên</label>
+                                                <input type="text" class="form-control"  name="ma_sinh_vien" 
+                                                    id="ma_sinh_vien" value="{{ strtoupper(Str::random('10')) }}" readonly>
                                             </div>
 
                                             <div class="mt-3">
-                                                <label for="ten_san_pham" class="form-label">Tên sinh viên</label>
-                                                <input type="text" class="form-control @error('ten_san_pham') is-invalid @enderror" name="ten_san_pham" id="ten_san_pham" placeholder="Nhập tên sinh viên" 
+                                                <label for="ten_sinh_vien" class="form-label">Tên sinh viên</label>
+                                                <input type="text" class="form-control @error('ten_sinh_vien') is-invalid @enderror" name="ten_sinh_vien" id="ten_sinh_vien" placeholder="Nhập tên sinh viên" 
                                                 
-                                                    value="{{ old('ten_san_pham') }}">
-                                                @error('ten_san_pham')
+                                                    value="{{ old('ten_sinh_vien') }}">
+                                                @error('ten_sinh_vien')
                                                     <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                             </div>
                                             
 
+
                                             <div class="mt-3">
                                                 <label for="ngay_sinh" class="form-label">Ngày sinh</label>
-                                                <input type="date" class="form-control @error('') is-invalid @enderror" name="ngay_sinh" id="ngay_sinh" 
+                                                <input type="date" class="form-control @error('ngay_sinh') is-invalid @enderror" name="ngay_sinh" id="ngay_sinh" 
                                              value="{{ old('ngay_sinh') }}">
                                             @error('ngay_sinh')
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                             </div>
                                             
+
                                             <div class="mt-3">
-                                                <label for="so_dien_thoai" class="form-label">Số ddienj thoại</label>
-                                                <input type="text" class="form-control @error('so_dien_thoai') is-invalid @enderror" name="so_dien_thoai" id="so_dien_thoai" placeholder="Nhập tên sinh viên" 
+                                                <label for="so_dien_thoai" class="form-label">Số điện thoại</label>
+                                                <input type="text" class="form-control @error('so_dien_thoai') is-invalid @enderror" name="so_dien_thoai" id="so_dien_thoai" placeholder="Nhập số điện thoại" 
                                                 
                                                     value="{{ old('so_dien_thoai') }}">
                                                 @error('so_dien_thoai')
@@ -83,10 +85,9 @@
                                                 @enderror
                                             </div>
 
-
                                         </div>
 
-                                        <div class="col-md-8">
+                                        <div class="col-md-12">
                                             <div class="row">
                                                 <div class="mt-3">
                                                     <label for="hinh_anh" class="form-label">Hình ảnh</label>
@@ -96,9 +97,6 @@
                                                         <p class="text-danger">{{ $message }}</p>
                                                 @enderror
                                                 </div>
-
-
-                                            
 
                                                 <div class="mt-3">
                                                     <label for="trang_thai" class="form-label">Trạng thái</label>
@@ -144,6 +142,6 @@
 @section('JS')
     <script src="https:////cdn.ckeditor.com/4.8.0/basic/ckeditor.js"></script>
     <script>
-        CKEDITOR.replace('so_dien_thoai');
+        CKEDITOR.replace('mo_ta');
     </script>
 @endsection

@@ -49,7 +49,10 @@
                         <div class="card">
                             <div class="card-header align-items-center d-flex">
                                 <h4 class="card-title mb-0 flex-grow-1">Danh sách sinh viên</h4>
-                                
+                                <a href="{{ route('sinhviens.create') }}" class="btn btn-soft-success material-shadow-none">
+                                    <i class="ri-add-circle-line align-middle me-1"></i>
+                                    Thêm sinh viên
+                                </a>
                             </div><!-- end card header -->
 
                             <div class="card-body">
@@ -84,29 +87,38 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($listSinhVien as $index => $item)
+                                                @foreach ($listSV as $index => $item)
                                                     <tr>
                                                         <td>{{ $index + 1}}</td>
                                                         <td>{{ $item->ma_sinh_vien }}</td>
-                                                        <td>{{$item ->hinh_anh}}</td>
+                                                        <td> 
+                                                            <img src="{{ Storage::url($item->hinh_anh) }}" alt="" class="img-thumbnail" width="150px" height="150px">
+                                                         </td>
                                                         <td>{{ $item->ten_sinh_vien }}</td>
-                                                        <td>{{$item->ngay_sinh}}</td>
-                                                        <td>{{$item->so_dien_thoai}}</td>
+                                                        <td>{{ $item->ngay_sinh }}</td>
+                                                        <td>{{ $item->so_dien_thoai }}</td>
+                                                        
                                                         <td>
                                                             {{-- {{ $item->trang_thai}} --}}
                                                             @if ($item->trang_thai == 1)
-                                                                <span class="badge bg-success-subtle text-success text-uppercase">Đang học</span>
+                                                                <span class="badge bg-success-subtle text-success text-uppercase">Còn hàng</span>
                                                             @else
-                                                                <span class="badge bg-danger-subtle text-success text-uppercase">Đã xong</span>
-                                                            
-                                                                
+                                                                <span class="badge bg-danger-subtle text-success text-uppercase">Hết hàng</span>                                                           
                                                             @endif
                                                         
                                                         </td>
                                                         <td>
-                                                            <a href="" class="btn btn-sm btn-primary">Xem</a>
-                                                            <a href="" class="btn btn-sm btn-warning">Sửa</a>
-                                                            <a href="" class="btn btn-sm btn-danger">Xóa</a>                                                
+                                                            <a href="{{route('sinhviens.show', $item->id)}}" class="btn btn-sm btn-primary">Xem</a>
+
+                                                            <a href="{{route('sinhviens.edit', $item->id)}}" class="btn btn-sm btn-warning">Sửa</a>
+
+                                                            <form action="{{route('sinhviens.destroy', $item->id)}}" method="POST" 
+                                                                onclick="return confirm('Xác nhận xóa sinh viên')" class="d-inline">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-sm btn-danger">Xóa</button>    
+                                                            </form>  
+
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -114,7 +126,7 @@
                                             </tbody>
                                         </table>
                                         <div class="mt-3">
-                                            {{$listSinhVien->links("pagination::bootstrap-5")}}  
+                                            {{$listSV->links("pagination::bootstrap-5")}}  
                                         </div>
                                         
                                     </div>
